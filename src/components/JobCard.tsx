@@ -42,12 +42,12 @@ export function JobCard({
   className,
 }: JobCardProps) {
   return (
-    <Card className={className} style={style}>
+    <Card className={`flex flex-col md:min-h-96 ${className}`} style={style}>
       <CardHeader>
         <CardTitle>{job.title}</CardTitle>
         <CardDescription>{job.company}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex-1">
         <p className="text-sm text-muted-foreground mb-4">
           {job.description}
         </p>

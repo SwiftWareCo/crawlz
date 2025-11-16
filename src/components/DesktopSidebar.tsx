@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, Bookmark, Settings } from "lucide-react";
 import { Button } from "~/components/ui/button";
+import { ModeToggle } from "~/components/ModeToggle";
 import { cn } from "~/lib/utils";
 
 const navItems = [
@@ -43,6 +44,9 @@ export function DesktopSidebar() {
             );
           })}
         </nav>
+        <div className="mt-auto">
+          <ModeToggle />
+        </div>
       </div>
     </aside>
   );
