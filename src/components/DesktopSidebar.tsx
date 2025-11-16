@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Bookmark, Settings } from "lucide-react";
+import { Home, Bookmark, Settings, User } from "lucide-react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Button } from "~/components/ui/button";
 import { ModeToggle } from "~/components/ModeToggle";
@@ -11,6 +11,7 @@ import { cn } from "~/lib/utils";
 const navItems = [
   { label: "Inbox", path: "/", icon: Home },
   { label: "Saved", path: "/saved", icon: Bookmark },
+  { label: "Leads", path: "/leads", icon: User },
   { label: "Preferences", path: "/preferences", icon: Settings },
 ];
 
@@ -48,7 +49,7 @@ export function DesktopSidebar() {
             })}
           </nav>
           <div className="mt-auto space-y-2">
-            <div className="flex justify-between  items-center gap-2 p-2">
+            <div className="flex items-center justify-between gap-2 p-2">
               <UserButton />
               <ModeToggle />
             </div>

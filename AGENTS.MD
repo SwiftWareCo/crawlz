@@ -2,9 +2,11 @@
 Instructions for GitHub Copilot and other AI agents. Keep these short, practical,
 and focused on things that help us avoid constantly-read docs or repeated context.
 -->
+
 # Crawlz-specific Coding Guide
 
 ## 1. Architecture in a nutshell
+
 - This is a T3 stack Next.js 15 app-router project (`src/app`), so pages live under
   `(auth)` for public/authentication walls and `(main)` for the authenticated experience.
 - `src/app/(main)/layout.tsx` simply wraps content in `AppShell`, which renders the
@@ -15,6 +17,7 @@ and focused on things that help us avoid constantly-read docs or repeated contex
   follow the shadcn-inspired `className` + `cn` helper pattern from `src/lib/utils.ts`.
 
 ## 2. Layout & authentication
+
 - The root layout (`src/app/layout.tsx`) wraps everything inside `ClerkProvider` +
   our `ThemeProvider` that configures `next-themes`. Auth pages live under `(auth)` while
   `(main)` layouts are behind `AppShell`.
@@ -22,6 +25,7 @@ and focused on things that help us avoid constantly-read docs or repeated contex
   with Clerk `auth.protect()`. Any new protected routes must be reflected in that matcher.
 
 ## 3. Data + action modules (TanStack Query first)
+
 - Every screen’s data fetching must go through a `{feature}.data.ts` module that exports the
   underlying Drizzle/Neon helpers and reusable TanStack Query hooks. For example, place
   `inbox.data.ts` next to `inbox/page.tsx`, and let it export `getInboxJobs`, `inboxQueryKey`,
@@ -34,7 +38,9 @@ and focused on things that help us avoid constantly-read docs or repeated contex
   client-side or from a server component that reuses the same helpers. Keep `queryClient` logic
   near the UI entrypoint when you need to prefetch/dehydrate on the server.
 
+
 ## 4. UI conventions
+
 - Interactive pieces (swipe cards, tabs, mode toggle) are `"use client"` components. Keep them
   lean and push business logic (API calls, state mutations, caching) to the `.data.ts`/`.actions.ts`
   modules described above.
@@ -45,6 +51,7 @@ and focused on things that help us avoid constantly-read docs or repeated contex
   so avoid nested layout wrappers that reflow the `DesktopSidebar` height.
 
 ## 5. Database & environment
+
 - `src/server/db/index.ts` wires Drizzle to Neon using `dotenv`. Any query helper should import
   `db` from this file so migrations and queries share the same connection.
 - Keep `.env` in sync with `src/env.js` (T3’s `env-nextjs` schema). `DATABASE_URL` is required
@@ -54,6 +61,7 @@ and focused on things that help us avoid constantly-read docs or repeated contex
   `pnpm run db:push`, and `pnpm run db:studio` all go through Drizzle Kit.
 
 ## 6. Common workflows
+
 - Install deps with `pnpm install`. Start the dev server via `pnpm run dev` (Next.js app router)
   or run `pnpm run preview` once you’ve built.
 - Use `pnpm run check` to run lint + type checking, `pnpm run typecheck` for TypeScript only,
@@ -63,6 +71,7 @@ and focused on things that help us avoid constantly-read docs or repeated contex
   styles outside of that provider.
 
 ## 7. Key files to reference
+
 - `src/components/AppShell.tsx`: layout container for the desktop sidebar + bottom nav.
 - `src/components/ui/*`: shared UI primitives (button, input, badge, tabs, etc.).
 - `src/server/db/index.ts` + `src/server/db/schema.ts`: Drizzle setup and schema examples.

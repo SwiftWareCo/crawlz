@@ -5,6 +5,7 @@ import { Geist } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { ThemeProvider } from "~/components/ThemeProvider";
+import { QueryProvider } from "~/lib/QueryProvider";
 
 export const metadata: Metadata = {
   title: "Job Tracker",
@@ -25,7 +26,7 @@ export default function RootLayout({
       <html lang="en" className={`${geist.variable}`} suppressHydrationWarning>
         <body>
           <ThemeProvider>
-            {children}
+            <QueryProvider>{children}</QueryProvider>
           </ThemeProvider>
         </body>
       </html>
