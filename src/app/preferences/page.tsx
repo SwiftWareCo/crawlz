@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { UserProfile } from "@clerk/nextjs";
 import { TagInput } from "~/components/TagInput";
 import { Switch } from "~/components/ui/switch";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
@@ -126,14 +127,7 @@ export default function PreferencesPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="rounded-lg border border-dashed p-8 text-center">
-              <p className="text-sm text-muted-foreground mb-2">
-                User Profile Component
-              </p>
-              <p className="text-xs text-muted-foreground">
-                Clerk UserProfile component will be integrated here
-              </p>
-            </div>
+            <UserProfile />
           </CardContent>
         </Card>
 
