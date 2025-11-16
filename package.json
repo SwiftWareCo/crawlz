@@ -5,16 +5,16 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "check": "next lint && tsc --noEmit",
+    "check": "eslint . && tsc --noEmit",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
     "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "preview": "next build && next start",
     "start": "next start",
     "typecheck": "tsc --noEmit"
@@ -38,23 +38,22 @@
     "drizzle-orm": "^0.41.0",
     "lucide-react": "^0.553.0",
     "motion": "^12.23.24",
-    "next": "^15.2.3",
+    "next": "16.0.3",
     "next-themes": "^0.4.6",
     "postgres": "^3.4.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "tailwind-merge": "^3.4.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
     "@tailwindcss/postcss": "^4.0.15",
     "@types/node": "^20.14.10",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "19.2.5",
+    "@types/react-dom": "19.2.3",
     "drizzle-kit": "^0.30.5",
     "eslint": "^9.23.0",
-    "eslint-config-next": "^15.2.3",
+    "eslint-config-next": "16.0.3",
     "eslint-plugin-drizzle": "^0.2.3",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
@@ -66,5 +65,11 @@
   },
   "ct3aMetadata": {
     "initVersion": "7.40.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.2.5",
+      "@types/react-dom": "19.2.3"
+    }
   }
 }

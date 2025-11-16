@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { UserProfile } from "@clerk/nextjs";
 import { TagInput } from "~/components/TagInput";
 import { Switch } from "~/components/ui/switch";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
@@ -118,18 +117,7 @@ export default function PreferencesPage() {
           </CardContent>
         </Card>
 
-        {/* Account Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Account</CardTitle>
-            <CardDescription>
-              Manage your account settings
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <UserProfile />
-          </CardContent>
-        </Card>
+
 
         {/* Save Button */}
         <div className="flex justify-end">
