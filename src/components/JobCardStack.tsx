@@ -54,7 +54,7 @@ const MOCK_JOBS: Job[] = [
 ];
 
 export function JobCardStack() {
-  const [jobs, setJobs] = useState<Job[]>(MOCK_JOBS);
+  const [jobs] = useState<Job[]>(MOCK_JOBS);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const x = useMotionValue(0);
@@ -109,7 +109,7 @@ export function JobCardStack() {
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-2">All Done!</h2>
           <p className="text-muted-foreground">
-            You've reviewed all available jobs.
+            You&apos;ve reviewed all available jobs.
           </p>
         </div>
       </div>

@@ -51,7 +51,7 @@ export default function PreferencesPage() {
                 placeholder="Type a keyword and press Enter"
               />
               <p className="text-xs text-muted-foreground">
-                Add skills, technologies, or job titles you're interested in
+                Add skills, technologies, or job titles you&apos;re interested in
               </p>
             </div>
 
