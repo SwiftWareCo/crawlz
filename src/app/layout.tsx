@@ -3,7 +3,7 @@ import "~/styles/globals.css";
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-import { AppShell } from "~/components/AppShell";
+import { dark } from "@clerk/themes";
 import { ThemeProvider } from "~/components/ThemeProvider";
 
 export const metadata: Metadata = {
@@ -21,11 +21,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en" className={`${geist.variable}`} suppressHydrationWarning>
         <body>
           <ThemeProvider>
-            <AppShell>{children}</AppShell>
+            {children}
           </ThemeProvider>
         </body>
       </html>

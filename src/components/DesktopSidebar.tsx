@@ -18,7 +18,7 @@ export function DesktopSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden md:block fixed left-0 top-0 h-screen w-56 border-r bg-background">
+    <aside className="bg-background fixed top-0 left-0 hidden h-screen w-56 border-r md:block">
       <div className="flex h-full flex-col gap-2 p-4">
         <div className="mb-4">
           <h1 className="text-xl font-bold">Job Tracker</h1>
@@ -35,7 +35,7 @@ export function DesktopSidebar() {
                   variant="ghost"
                   className={cn(
                     "justify-start",
-                    isActive && "bg-accent text-accent-foreground"
+                    isActive && "bg-accent text-accent-foreground",
                   )}
                   asChild
                 >
@@ -48,10 +48,10 @@ export function DesktopSidebar() {
             })}
           </nav>
           <div className="mt-auto space-y-2">
-            <div className="flex items-center gap-2 p-2">
+            <div className="flex justify-between  items-center gap-2 p-2">
               <UserButton />
+              <ModeToggle />
             </div>
-            <ModeToggle />
           </div>
         </SignedIn>
 
