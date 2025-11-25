@@ -12,6 +12,7 @@ export const env = createEnv({
     CLERK_SECRET_KEY: z
       .string()
       .min(1, "CLERK secret key is required for server-side SDK calls"),
+    GEMINI_API_KEY: z.string().min(1, "GEMINI_API_KEY is required"),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -51,6 +52,7 @@ export const env = createEnv({
     DATABASE_URL: process.env.DATABASE_URL,
     DATABASE_URL_UNPOOLED: process.env.DATABASE_URL_UNPOOLED,
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY,
     NODE_ENV: process.env.NODE_ENV,
     PGHOST: process.env.PGHOST,
     PGHOST_UNPOOLED: process.env.PGHOST_UNPOOLED,

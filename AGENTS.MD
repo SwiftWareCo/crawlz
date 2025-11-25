@@ -7,7 +7,7 @@ and focused on things that help us avoid constantly-read docs or repeated contex
 
 ## 1. Architecture in a nutshell
 
-- This is a T3 stack Next.js 15 app-router project (`src/app`), so pages live under
+- This is a T3 stack Next.js 16 app-router project (`src/app`), so pages live under
   `(auth)` for public/authentication walls and `(main)` for the authenticated experience.
 - `src/app/(main)/layout.tsx` simply wraps content in `AppShell`, which renders the
   `DesktopSidebar`, `MobileBottomNav`, and the `main` slot for page content.
@@ -24,19 +24,6 @@ and focused on things that help us avoid constantly-read docs or repeated contex
 - `src/middleware.ts` uses `createRouteMatcher` to protect `/`, `/saved`, and `/preferences`
   with Clerk `auth.protect()`. Any new protected routes must be reflected in that matcher.
 
-## 3. Data + action modules (TanStack Query first)
-
-- Every screen’s data fetching must go through a `{feature}.data.ts` module that exports the
-  underlying Drizzle/Neon helpers and reusable TanStack Query hooks. For example, place
-  `inbox.data.ts` next to `inbox/page.tsx`, and let it export `getInboxJobs`, `inboxQueryKey`,
-  and `useInboxQuery` (all of them should import `db` from `src/server/db`). Server components
-  can `await getInboxJobs()` while client components re-use `useInboxQuery` for caching.
-- Mutations belong in `{feature}.actions.ts`. These files should wrap Drizzle writes and
-  expose TanStack Query `useMutation` hooks and invalidation helpers so that client-side
-  interactions (e.g., saving/dismissing a job from `JobCardStack`) can stay in sync.
-- Always lean on `@tanstack/react-query` for both reads and writes—whether the call originates
-  client-side or from a server component that reuses the same helpers. Keep `queryClient` logic
-  near the UI entrypoint when you need to prefetch/dehydrate on the server.
 
 
 ## 4. UI conventions

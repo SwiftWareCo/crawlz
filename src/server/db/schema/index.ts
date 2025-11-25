@@ -4,3 +4,4 @@ export * from "./preferences";
 export * from "./all-jobs";
 export * from "./saved-jobs";
 export * from "./leads";
+export * from "./resumes";
